@@ -19,7 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 public class TumblinMain extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, MyContentProvider.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -51,8 +51,8 @@ public class TumblinMain extends Activity
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
+            .replace(R.id.container, (position == 2) ? MyContentProvider.newInstance("", "") : PlaceholderFragment.newInstance(position + 1))
+            .commit();
     }
 
     public void onSectionAttached(int number) {
@@ -67,6 +67,11 @@ public class TumblinMain extends Activity
                 mTitle = getString(R.string.title_section3);
                 break;
         }
+    }
+
+    @Override
+    public void onFragmentInteraction(String id) {
+
     }
 
     public void restoreActionBar() {

@@ -25,6 +25,7 @@
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:name="org.zero.tumble.NavigationDrawerFragment" />
+        android:name="org.zero.tumble.NavigationDrawerFragment"
+        tools:layout="@layout/fragment_tumblin_main" />
 
 </android.support.v4.widget.DrawerLayout>
