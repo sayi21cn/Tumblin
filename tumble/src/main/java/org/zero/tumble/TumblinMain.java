@@ -48,10 +48,17 @@ public class TumblinMain extends Activity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+        Fragment frag;
+        if (position == 1)
+            frag = ListFrag.newInstance("");
+        else if (position == 2)
+            frag = MyContentProvider.newInstance("","");
+        else
+            frag = PlaceholderFragment.newInstance(position + 1);
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-            .replace(R.id.container, (position == 2) ? MyContentProvider.newInstance("", "") : PlaceholderFragment.newInstance(position + 1))
+            .replace(R.id.container,frag)
             .commit();
     }
 
