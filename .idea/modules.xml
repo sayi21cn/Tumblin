@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Tumblin.iml" filepath="$PROJECT_DIR$/Tumblin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/libraries/app/app.iml" filepath="$PROJECT_DIR$/libraries/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/oauth/oauth.iml" filepath="$PROJECT_DIR$/libraries/oauth/oauth.iml" />
       <module fileurl="file://$PROJECT_DIR$/tumble/tumble.iml" filepath="$PROJECT_DIR$/tumble/tumble.iml" />
     </modules>
   </component>

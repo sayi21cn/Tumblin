@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="codepath-utils">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libraries/oauth/libs/codepath-utils.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tumble/build/exploded-bundles/TumblinLibrariesOauthUnspecified.aar/libs/codepath-utils.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
