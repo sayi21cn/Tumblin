@@ -16,7 +16,9 @@ import android.net.Uri;
 
 import com.codepath.utils.AsyncSimpleTask;
 import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestHandle;
+import com.loopj.android.http.ResponseHandlerInterface;
+
 
 /*
  * OAuthAsyncHttpClient is responsible for managing the request and access token exchanges and then
@@ -35,7 +37,7 @@ public class OAuthAsyncHttpClient extends AsyncHttpClient {
                                 OAuthTokenHandler handler) {
     	this.apiClass = apiClass;
         this.handler = handler;
-        if (callbackUrl == null) { callbackUrl = OAuthConstants.OUT_OF_BAND; };
+        if (callbackUrl == null) { callbackUrl = OAuthConstants.OUT_OF_BAND; }
         this.service = new ServiceBuilder()
         	.provider(apiClass).apiKey(consumerKey)
         	.apiSecret(consumerSecret).callback(callbackUrl)
@@ -53,10 +55,10 @@ public class OAuthAsyncHttpClient extends AsyncHttpClient {
 
             public void doInBackground() {
                 try {
-                	if (service.getVersion() == "1.0") {
+                	if (service.getVersion().equals("1.0")) {
                     	requestToken = service.getRequestToken();
                         authorizeUrl = service.getAuthorizationUrl(requestToken);
-                	} else if (service.getVersion() == "2.0") {
+                	} else if (service.getVersion().equals("2.0")) {
                 		authorizeUrl = service.getAuthorizationUrl(null);
                 	}
                 } catch (Exception e) {
@@ -83,12 +85,11 @@ public class OAuthAsyncHttpClient extends AsyncHttpClient {
   
             public void doInBackground() {
             	// Fetch the verifier code from redirect url parameters
-        		Uri authorizedUri = uri;
         		String oauth_verifier = null;
-        		if (authorizedUri.getQuery().contains(OAuthConstants.CODE)) {
-        			oauth_verifier = authorizedUri.getQueryParameter(OAuthConstants.CODE);
-        		} else if (authorizedUri.getQuery().contains(OAuthConstants.VERIFIER)) {
-        			oauth_verifier = authorizedUri.getQueryParameter(OAuthConstants.VERIFIER);
+        		if (uri.getQuery().contains(OAuthConstants.CODE)) {
+        			oauth_verifier = uri.getQueryParameter(OAuthConstants.CODE);
+        		} else if (uri.getQuery().contains(OAuthConstants.VERIFIER)) {
+        			oauth_verifier = uri.getQueryParameter(OAuthConstants.VERIFIER);
         		}
         		
         		// Use verifier token to fetch access token
@@ -130,20 +131,21 @@ public class OAuthAsyncHttpClient extends AsyncHttpClient {
     
     // Send scribe signed request based on the async http client to construct a signed request
     // Accepts an HttpEntity which has the underlying entity for the request params
-    protected void sendRequest(DefaultHttpClient client, HttpContext httpContext, HttpUriRequest uriRequest,
-            String contentType, AsyncHttpResponseHandler responseHandler, Context context) {
-    	if (this.service != null && accessToken != null) {
+    protected RequestHandle sendRequest(DefaultHttpClient client,HttpContext httpContext, HttpUriRequest uriRequest,
+            String contentType, ResponseHandlerInterface responseHandler, Context context) {
+        if (this.service != null && accessToken != null) {
             try {
             	ScribeRequestAdapter adapter = new ScribeRequestAdapter(uriRequest);
                 this.service.signRequest(accessToken, adapter);
-            	super.sendRequest(client, httpContext, uriRequest, contentType, responseHandler, context);
+            	return super.sendRequest(client, httpContext, uriRequest, contentType, responseHandler, context);
             } catch (Exception e) {
             	e.printStackTrace();
+                return null;
             }
         } else if (accessToken == null) {
         	throw new OAuthException("Cannot send unauthenticated requests for " + apiClass.getSimpleName() + " client. Please attach an access token!");
         }
-    	
+    	return null;
     }
     
     // Defines the interface handler for different token handlers
