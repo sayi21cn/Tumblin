@@ -1,0 +1,29 @@
+apply plugin: 'android-library'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.2"
+
+    defaultConfig {
+        minSdkVersion 4
+        targetSdkVersion 19
+    }
+
+    release {
+
+    }
+
+//    buildTypes {
+//        release {
+//            runProguard false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+//        }
+//    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:+'
+    compile files('libs/android-async-http-1.4.3.jar')
+    compile files('libs/codepath-utils.jar')
+    compile files('libs/scribe-codepath.jar')
+}

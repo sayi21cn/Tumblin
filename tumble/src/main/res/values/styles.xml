@@ -57,4 +57,9 @@
         <item name="android:dropDownListViewStyle">@style/DropDownListView.TumblinAction</item>
     </style>
 
+    <style name="TumblinLogin" parent="@android:style/Theme.Holo">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowTitleSize">0dp</item>
+    </style>
+
 </resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\Users\mtopol\projects\Tumblin\libraries\app\src\main\res" />
+        <source path="C:\Users\mtopol\projects\Tumblin\libraries\app\build\res\rs\release" />
+        <source path="C:\Users\mtopol\projects\Tumblin\libraries\app\build\res\generated\release" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="C:\Users\mtopol\projects\Tumblin\libraries\app\src\release\res" />
+    </dataSet>
+
+</merger>
