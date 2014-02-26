@@ -2,12 +2,12 @@
 <merger>
 
     <dataSet config="main" >
-        <source path="C:\Users\mtopol\projects\android-oauth\app\src\main\res" />
-        <source path="C:\Users\mtopol\projects\android-oauth\app\build\res\rs\debug" />
-        <source path="C:\Users\mtopol\projects\android-oauth\app\build\res\generated\debug" />
+        <source path="C:\Users\mtopol\projects\Tumblin\libraries\oauth\src\main\res" />
+        <source path="C:\Users\mtopol\projects\Tumblin\libraries\oauth\build\res\rs\debug" />
+        <source path="C:\Users\mtopol\projects\Tumblin\libraries\oauth\build\res\generated\debug" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="C:\Users\mtopol\projects\android-oauth\app\src\debug\res" />
+        <source path="C:\Users\mtopol\projects\Tumblin\libraries\oauth\src\debug\res" />
     </dataSet>
 
 </merger>

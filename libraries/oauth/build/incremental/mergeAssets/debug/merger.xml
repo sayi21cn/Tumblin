@@ -2,10 +2,10 @@
 <merger>
 
     <dataSet config="main" >
-        <source path="C:\Users\mtopol\projects\android-oauth\app\src\main\assets" />
+        <source path="C:\Users\mtopol\projects\Tumblin\libraries\oauth\src\main\assets" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="C:\Users\mtopol\projects\android-oauth\app\src\debug\assets" />
+        <source path="C:\Users\mtopol\projects\Tumblin\libraries\oauth\src\debug\assets" />
     </dataSet>
 
 </merger>
